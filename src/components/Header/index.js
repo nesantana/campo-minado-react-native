@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Flag from "./Flag";
+import Flag from "../Flag";
 
 export default class Header extends React.Component {
   render() {

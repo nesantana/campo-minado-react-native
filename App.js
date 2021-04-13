@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 // components
 
@@ -9,6 +9,10 @@ import Header from "./src/components/Header";
 // screens
 
 import LevelSelection from "./src/screens/LevelSelection";
+
+// Styled
+
+import { ContainerFlexEnd } from './src/styles';
 
 import {
   createMinedBoard,
@@ -81,34 +85,30 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ContainerFlexEnd>
         <LevelSelection
           isVisible={ this.state.showLevelSelection }
           onLevelSelect={ this.onLevelSelected }
           onCancel={ () => this.setState({ showLevelSelection: false }) }
         />
         <Header
-          flagsLeft={this.minesAmount() - flagUsed(this.state.board)}
-          onNewGame={() => this.setState(this.createState())}
-          onFlagPress={() => this.setState({ showLevelSelection: true })}
+          flagsLeft={ this.minesAmount() - flagUsed(this.state.board) }
+          onNewGame={ () => this.setState(this.createState()) }
+          onFlagPress={ () => this.setState({ showLevelSelection: true }) }
         />
-        <View style={styles.board}>
+        <View style={ styles.board }>
           <MineField
-            board={this.state.board}
+            board={ this.state.board }
             onOpenField={ this.onOpenField }
             onSelectField={ this.onSelectField }
           />
         </View>
-      </View>
+      </ContainerFlexEnd>
     )
   };
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
   board: {
     alignItems: 'center',
     backgroundColor: '#AAAAAA'

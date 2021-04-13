@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet} from "react-native";
-import Field from "./Field";
+import Field from "../Field";
 
-export default class MineField extends React.Component {
+export default class Index extends React.Component {
   render() {
     const rows = this.props.board.map((row, r) => {
       const columns = row.map((field, c) => {

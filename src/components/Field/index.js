@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
-import Mine from './Mine';
-import Flag from './Flag';
+import Mine from '../Mine';
+import Flag from '../Flag';
 
-import params from '../params';
+import params from '../../params';
 
-export default class Field extends React.Component {
+export default class Index extends React.Component {
   render() {
 
     const {mined, opened, nearMines, exploded, flagged} = this.props || null;
@@ -13,7 +13,6 @@ export default class Field extends React.Component {
     const styleField = [styles.field];
     if (opened) styleField.push(styles.opened);
     if (exploded) styleField.push(styles.exploded);
-    if (flagged) styleField.push(styles.flagged);
     if (!opened && !exploded) styleField.push(styles.regular);
 
     let color = null;
@@ -37,12 +36,12 @@ export default class Field extends React.Component {
           }
           {
             mined && opened
-              ? <Mine/>
+              ? <Mine />
               : false
           }
           {
             flagged && !opened
-              ? <Flag/>
+              ? <Flag />
               : false
           }
         </View>
@@ -77,6 +76,5 @@ const styles = StyleSheet.create({
   exploded: {
     backgroundColor: 'red',
     borderColor: 'red'
-  },
-  flagged: {}
+  }
 });
